@@ -353,7 +353,7 @@ You will probably want to use the instructional machines for the above renders i
 </div>
 <br>
 <p>
-  The 2nd bounce image has light that hit a wall or floor, the bunny, and then the camera (it adds most of the ambient light on the bunny). The 3rd bounce is dimmer because much of the light has dissipated, but it's important for fill light and value accuracy in the shadows, which standard rasterization doesn't really have.
+  Unaccumulated images look much darker because it only shows the stage of light that has traveled m times, whereas accumulated images get brighter and brighter as m increases. The 2nd bounce image has light that hit a wall or floor, the bunny, and then the camera (it adds most of the ambient light on the bunny). The 3rd bounce is dimmer because much of the light has dissipated, but it's important for fill light and value accuracy in the shadows, which standard rasterization doesn't really have.
 </p>
 <br>
 
@@ -403,7 +403,7 @@ You will probably want to use the instructional machines for the above renders i
 </div>
 <br>
 <p>
-  Unaccumulated images look much darker because it only shows the stage of light that has traveled m times, whereas accumulated images get brighter and brighter as m increases.
+  As the number of samples per pixel increases, the amount of high contrast noise in the render decreases dramatically. This is because each pixel color is the average of multiple random light paths, so if it only has a few samples to work with, then the Monte Carlo estimator will end up with high variance and the render will appear grainy. As the sample rate increases, the estimator converges to the true radiance of the image. At 1024 sample, we see that the high-contrast noise is gone, replaced by smooth gradients and soft shadows.
 </p>
 <br>
 
