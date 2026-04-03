@@ -41,7 +41,7 @@
 
 <h1 align="middle">CS 184: Computer Graphics and Imaging, Spring 2023</h1>
 <h1 align="middle">Project 3-1: Path Tracer</h1>
-<h2 align="middle">YOUR NAME(S)</h2>
+<h2 align="middle">Ece Eris</h2>
 
 <!-- Add Website URL -->
 <h2 align="middle">Website URL: <a href="https://cal-cs184-student.github.io/hw-webpages-eceeris/">https://cal-cs184-student.github.io/hw-webpages-eceeris/</a></h2>
@@ -49,19 +49,9 @@
 <br><br>
 
 
-<div align="center">
-  <table style="width=100%">
-      <tr>
-          <td align="middle">
-          <img src="images/example_image.png" width="480px" />
-          <figcaption align="middle">Results Caption: my bunny is the bounciest bunny</figcaption>
-      </tr>
-  </table>
-</div>
-
 <h2 align="middle">Overview</h2>
 <p>
-    YOUR RESPONSE GOES HERE
+  In this project, I implemented a renderer using the Rendering Equation and a path tracing pipeline to simulate the complex behavior of light as it interacts with various surfaces. The project can be broken down into five parts. First, I established the renderer's foundation: generating the rays with camera-to-world transformations and implementing intersection logic for triangles and spheres. Next, to handle large primitive counts, I implemented a BVH with a recursive splitting heuristic which reduced intersection complexity from O(n) to O(logn). Thirdly, I implemented both Uniform Hemisphere Sampling and Light Importance Sampling and found that while hemisphere sampling is unbiased, importance sampling significantly reduces noise by ensuring each sample is more likely to contribute to the final color of the pixel. Next, I extended the renderer to handle indirect lighting using a Russian Roulette as a termination criterion to avoid infinite recursion when light bounces off surfaces. Finally, I optimized the rendering process with a convergence test that can detect when a pixel has converged within a 95% confidence interval and terminate the sampling early.
 </p>
 <br>
 
@@ -153,7 +143,7 @@ Compare rendering times on a few scenes with moderately complex geometries with 
       </td>
       <td>
         <img src="images/task2_beetle.png" align="middle" width="400px"/>
-        <figcaption>Beetle.dae</figcaption>
+        <figcaption>beetle.dae</figcaption>
       </td>
     </tr>
   </table>
@@ -291,12 +281,12 @@ You will probably want to use the instructional machines for the above renders i
   <table style="width:100%">
     <tr align="center">
       <td>
-        <img src="images/your_file.png" align="middle" width="400px"/>
-        <figcaption>example1.dae</figcaption>
+        <img src="images/bunny_m100.png" align="middle" width="400px"/>
+        <figcaption>CBbunny.dae</figcaption>
       </td>
       <td>
-        <img src="images/your_file.png" align="middle" width="400px"/>
-        <figcaption>example2.dae</figcaption>
+        <img src="images/spheres_global.png" align="middle" width="400px"/>
+        <figcaption>CBSpheres.dae</figcaption>
       </td>
     </tr>
   </table>
@@ -312,11 +302,11 @@ You will probably want to use the instructional machines for the above renders i
     <tr align="center">
       <td>
         <img src="images/bunny_m1_unaccum.png" align="middle" width="400px"/>
-        <figcaption>Only direct illumination (example1.dae)</figcaption>
+        <figcaption>Only direct illumination (CBbunny.dae)</figcaption>
       </td>
       <td>
-        <img src="images/your_file.png" align="middle" width="400px"/>
-        <figcaption>Only indirect illumination (example1.dae)</figcaption>
+        <img src="images/bunny_indirect_only.png" align="middle" width="400px"/>
+        <figcaption>Only indirect illumination (CBbunny.dae)</figcaption>
       </td>
     </tr>
   </table>
@@ -335,27 +325,27 @@ You will probably want to use the instructional machines for the above renders i
   <table style="width:100%">
     <tr align="center">
       <td>
-        <img src="images/your_file.png" align="middle" width="400px"/>
+        <img src="images/bunny_m0.png" align="middle" width="400px"/>
         <figcaption>max_ray_depth = 0 (CBbunny.dae)</figcaption>
       </td>
       <td>
-        <img src="images/your_file.png" align="middle" width="400px"/>
+        <img src="images/bunny_m1.png" align="middle" width="400px"/>
         <figcaption>max_ray_depth = 1 (CBbunny.dae)</figcaption>
       </td>
     </tr>
     <tr align="center">
       <td>
-        <img src="images/your_file.png" align="middle" width="400px"/>
+        <img src="images/bunny_m2.png" align="middle" width="400px"/>
         <figcaption>max_ray_depth = 2 (CBbunny.dae)</figcaption>
       </td>
       <td>
-        <img src="images/your_file.png" align="middle" width="400px"/>
+        <img src="images/bunny_m3.png" align="middle" width="400px"/>
         <figcaption>max_ray_depth = 3 (CBbunny.dae)</figcaption>
       </td>
     </tr>
     <tr align="center">
       <td>
-        <img src="images/your_file.png" align="middle" width="400px"/>
+        <img src="images/bunny_m100.png" align="middle" width="400px"/>
         <figcaption>max_ray_depth = 100 (CBbunny.dae)</figcaption>
       </td>
     </tr>
@@ -375,38 +365,38 @@ You will probably want to use the instructional machines for the above renders i
   <table style="width:100%">
     <tr align="center">
       <td>
-        <img src="images/your_file.png" align="middle" width="400px"/>
-        <figcaption>1 sample per pixel (example1.dae)</figcaption>
+        <img src="images/bunny_s1.png" align="middle" width="400px"/>
+        <figcaption>1 sample per pixel (bunny.dae)</figcaption>
       </td>
       <td>
-        <img src="images/your_file.png" align="middle" width="400px"/>
-        <figcaption>2 samples per pixel (example1.dae)</figcaption>
-      </td>
-    </tr>
-    <tr align="center">
-      <td>
-        <img src="images/your_file.png" align="middle" width="400px"/>
-        <figcaption>4 samples per pixel (example1.dae)</figcaption>
-      </td>
-      <td>
-        <img src="images/your_file.png" align="middle" width="400px"/>
-        <figcaption>8 samples per pixel (example1.dae)</figcaption>
+        <img src="images/bunny_s2.png" align="middle" width="400px"/>
+        <figcaption>2 samples per pixel (bunny.dae)</figcaption>
       </td>
     </tr>
     <tr align="center">
       <td>
-        <img src="images/your_file.png" align="middle" width="400px"/>
-        <figcaption>16 samples per pixel (example1.dae)</figcaption>
+        <img src="images/bunny_s4.png" align="middle" width="400px"/>
+        <figcaption>4 samples per pixel (bunny.dae)</figcaption>
       </td>
       <td>
-        <img src="images/your_file.png" align="middle" width="400px"/>
-        <figcaption>64 samples per pixel (example1.dae)</figcaption>
+        <img src="images/bunny_s8.png" align="middle" width="400px"/>
+        <figcaption>8 samples per pixel (bunny.dae)</figcaption>
       </td>
     </tr>
     <tr align="center">
       <td>
-        <img src="images/your_file.png" align="middle" width="400px"/>
-        <figcaption>1024 samples per pixel (example1.dae)</figcaption>
+        <img src="images/bunny_s16.png" align="middle" width="400px"/>
+        <figcaption>16 samples per pixel (bunny.dae)</figcaption>
+      </td>
+      <td>
+        <img src="images/bunny_s64.png" align="middle" width="400px"/>
+        <figcaption>64 samples per pixel (bunny.dae)</figcaption>
+      </td>
+    </tr>
+    <tr align="center">
+      <td>
+        <img src="images/bunny_s1024.png" align="middle" width="400px"/>
+        <figcaption>1024 samples per pixel (bunny.dae)</figcaption>
       </td>
     </tr>
   </table>
@@ -438,22 +428,22 @@ Pick one scene and render it with at least 2048 samples per pixel. Show a good s
   <table style="width:100%">
     <tr align="center">
       <td>
-        <img src="images/your_file.png" align="middle" width="400px"/>
-        <figcaption>Rendered image (example1.dae)</figcaption>
+        <img src="images/spheres_adaptive.png" align="middle" width="400px"/>
+        <figcaption>Rendered image (CBspheres.dae)</figcaption>
       </td>
       <td>
-        <img src="images/your_file.png" align="middle" width="400px"/>
-        <figcaption>Sample rate image (example1.dae)</figcaption>
+        <img src="images/spheres_adaptive_rate.png" align="middle" width="400px"/>
+        <figcaption>Sample rate image (CBspheres.dae)</figcaption>
       </td>
     </tr>
     <tr align="center">
       <td>
-        <img src="images/your_file.png" align="middle" width="400px"/>
-        <figcaption>Rendered image (example2.dae)</figcaption>
+        <img src="images/bunny_adaptive.png" align="middle" width="400px"/>
+        <figcaption>Rendered image (CBbunny.dae)</figcaption>
       </td>
       <td>
-        <img src="images/your_file.png" align="middle" width="400px"/>
-        <figcaption>Sample rate image (example2.dae)</figcaption>
+        <img src="images/bunny_adaptive_rate.png" align="middle" width="400px"/>
+        <figcaption>Sample rate image (CBbunny.dae)</figcaption>
       </td>
     </tr>
   </table>
